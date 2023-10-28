@@ -4,7 +4,14 @@
 go get go.mongodb.org/mongo-driver/mongo
 ```
 
-## Panic Error
+### MongoDB Compass Download Link
+
+- [MongoDB Compass Link](https://www.mongodb.com/try/download/compass)
+
+<img src="../diagrams/mongo-compass-connection-string.png" />
+<img src="../diagrams/mongo-compass-logs.png" />
+
+## Starting Mongo Microservice Locally (`localhost`)
 
 - If running on `localhost` and see the error below, port 5000 is being used locally, change `webPort` to something else.
 

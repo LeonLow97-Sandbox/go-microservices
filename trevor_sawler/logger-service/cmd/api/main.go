@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	webPort  = "5050" // docker
+	webPort  = "80" // change to another port for localhost
 	rpcPort  = "5001"
-	mongoURL = "mongodb://localhost:27017"
+	mongoURL = "mongodb://mongo:27017" // change `mongo` to `localhost`
 	gRpcPort = "50001"
 )
 
