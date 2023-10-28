@@ -48,9 +48,15 @@
 - Added a logging service in authentication microservice
   - Whenever someone logs in successfully or logout, it will create a log entry.
 
-## Helpful Links
+### Helpful Links
 
 - [Relation table not created in Docker container](https://rajyavardhan.medium.com/when-you-get-relation-does-not-exist-in-postgres-7ffb0c3c674b)
 - [StackOverflow - Slow Queries between server and database in Docker](https://stackoverflow.com/questions/65875996/very-slow-queries-between-server-and-database-in-docker)
 - [Bind Mounts vs Volumes](https://docs.docker.com/storage/volumes/)
 - [Blog on Docker volumes vs Bind mounts](https://blog.logrocket.com/docker-volumes-vs-bind-mounts/)
+
+### Mail Service
+
+- Service should not communicate with Internet.
+  - Put inside Docker Swarm or Kubernetes Cluster
+- Create a Mail Server (MailHog - for development)
