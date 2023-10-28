@@ -57,6 +57,8 @@
 
 ### Mail Service
 
-- Service should not communicate with Internet.
+- In this project (development), we are allowing the user to press "Test Mail" and send an email to the mail server (open to the Internet, Bad!).
+- In Production, Service should not communicate with Internet.
+  - For example, if you want to send an email when someone unsuccessfully logs on to the system, broker will communicate with authentication service. The authentication service will then talk to the mail service saying the user is not authenticated and then send out an email. Every microservice that needs to send an email will communicate with the mail microservice. The broker service (directly connected to user's browser/internet), is not allowed to communicate directly to the mail microservice, for security purposes and prevention of spam mails.
   - Put inside Docker Swarm or Kubernetes Cluster
 - Create a Mail Server (MailHog - for development)
