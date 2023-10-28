@@ -37,3 +37,11 @@
 
 - Adding an Authentication Microservice that will be called by the Broker Service.
 - There is a link between the browser and the Authentication Microservice (not a common practice and usually it will be called by the Broker Service).
+
+### Logger Microservice
+
+- Logger Service has no connection to Internet and is only available within the Microservice Cluster. This cluster can be
+    - Docker
+    - Docker Swarm
+    - Kubernetes Cluster
+- Logger Service stores all its information in Mongo (NoSQL) Database.
