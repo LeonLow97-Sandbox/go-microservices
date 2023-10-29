@@ -53,6 +53,7 @@ func main() {
 	// register the RPC Server (tell the application we can accept rpc requests)
 	err = rpc.Register(new(RPCServer))
 	go app.rpcListen()
+	go app.gRPCListen()
 
 	// start web server
 	// running as its GoRoutine so we have a means of adding things
