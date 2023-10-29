@@ -65,9 +65,19 @@
 
 ### Listener Service (RabbitMQ - AMQP)
 
+<img src="./diagrams/listener-service.png" />
+
 - Listener Service that talks to RabbitMQ (AMQP)
 - If someone wants to authenticate and sends a request to the broker, the broker doesn't communicate directly with the authentication service.
   - The Broker pushes the message to RabbitMQ (AMQP Server)
   - Listener pulls a message out of the queue and calls the appropriate service based on the content in the message.
   - Listener then sends a request to the authentication service and attempts the login.
 - E.g., Request --> Broker Service (publisher) --> RabbitMQ --> Listener Service (subscriber) --> Log/Authentication Microservice
+
+### RPC
+
+<img src="./diagrams/rpc-communication.png" />
+
+- Communication between services must be in the same programming language, e.g., Go.
+  - If broker service uses RPC in Python and Logger uses Go, it won't work.
+- RPC can have better performance because it is faster than marshaling and un-marshaling JSON.
