@@ -78,6 +78,6 @@
 
 <img src="./diagrams/rpc-communication.png" />
 
-- Communication between services must be in the same programming language, e.g., Go.
+- Communication between services must be in the **same programming language**, e.g., Go.
   - If broker service uses RPC in Python and Logger uses Go, it won't work.
 - RPC can have better performance because it is faster than marshaling and un-marshaling JSON.
