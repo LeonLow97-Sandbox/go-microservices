@@ -90,3 +90,43 @@
 - gRPC uses protobuf
   - It is where you store your data and function contracts in the form of a proto file.
   - As this is in the form of a contract, both the client and server need to have the same proto file.
+- In VSCode, install "Protobuf support" extension for nicer highlighting in `.proto` file.
+
+---
+
+#### Process:
+
+1. Define a protocol (proto file)
+2. Compile the protocol using the 2 things we install below.
+3. Write the client code
+4. Write the server code
+
+---
+
+#### Protocol Buffer Compiler Installation
+
+- [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/)
+- [GitHub Link (Recommended)](https://github.com/protocolbuffers/protobuf/releases)
+  - `protoc-3.20.0-osx-x86_64.zip` for MacOS
+
+```
+## Run this in command line to install protobuf in Go
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.27
+
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+brew update
+brew upgrade 
+brew install protobuf
+
+which go
+cp /opt/homebrew/bin/protoc ~/go/bin
+protoc --version
+
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+## Will create 2 files --> logs_grpc.pb.go and logs.pb.go
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative logs.proto
+```
+
+---
