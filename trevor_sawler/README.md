@@ -74,10 +74,19 @@
   - Listener then sends a request to the authentication service and attempts the login.
 - E.g., Request --> Broker Service (publisher) --> RabbitMQ --> Listener Service (subscriber) --> Log/Authentication Microservice
 
-### RPC
+### RPC (Remote Procedure Call)
 
 <img src="./diagrams/rpc-communication.png" />
 
-- Communication between services must be in the **same programming language**, e.g., Go.
+- Communication between services (client and server) must be in the **same programming language**, e.g., Go.
   - If broker service uses RPC in Python and Logger uses Go, it won't work.
-- RPC can have better performance because it is faster than marshaling and un-marshaling JSON.
+- RPC has better performance because it is faster than marshaling and un-marshaling JSON.
+
+### gRPC (Google RPC)
+
+<img src="./diagrams/grpc-communication.png" />
+
+- Client and server can be written in different programming languages.
+- gRPC uses protobuf
+  - It is where you store your data and function contracts in the form of a proto file.
+  - As this is in the form of a contract, both the client and server need to have the same proto file.
