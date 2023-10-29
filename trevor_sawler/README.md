@@ -109,6 +109,8 @@
 - [GitHub Link (Recommended)](https://github.com/protocolbuffers/protobuf/releases)
   - `protoc-3.20.0-osx-x86_64.zip` for MacOS
 
+<img src="./diagrams/setup-protoc.png" />
+
 ```
 ## Run this in command line to install protobuf in Go
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.27
