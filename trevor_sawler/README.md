@@ -62,3 +62,12 @@
   - For example, if you want to send an email when someone unsuccessfully logs on to the system, broker will communicate with authentication service. The authentication service will then talk to the mail service saying the user is not authenticated and then send out an email. Every microservice that needs to send an email will communicate with the mail microservice. The broker service (directly connected to user's browser/internet), is not allowed to communicate directly to the mail microservice, for security purposes and prevention of spam mails.
   - Put inside Docker Swarm or Kubernetes Cluster
 - Create a Mail Server (MailHog - for development)
+
+### Listener Service (RabbitMQ - AMQP)
+
+- Listener Service that talks to RabbitMQ (AMQP)
+- If someone wants to authenticate and sends a request to the broker, the broker doesn't communicate directly with the authentication service.
+  - The Broker pushes the message to RabbitMQ (AMQP Server)
+  - Listener pulls a message out of the queue and calls the appropriate service based on the content in the message.
+  - Listener then sends a request to the authentication service and attempts the login.
+- E.g., Request --> Broker Service (publisher) --> RabbitMQ --> Listener Service (subscriber) --> Log/Authentication Microservice
