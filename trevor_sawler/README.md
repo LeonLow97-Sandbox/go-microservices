@@ -170,3 +170,14 @@ docker push lowjiewei/listener-service:1.0.0
   - `kubectl expose deployment broker-service --type=LoadBalancer --port=8080 --target-port=8080`
 - Running separate postgres server
   - `docker-compose -f postgres.yml up -d` in `project` directory
+- Adding `Ingress` to minikube
+  - `minikube addons enable ingress`
+- After adding `ingress.yml` file
+  - Run `kubectl apply -f ingress.yml`
+  - Run `sudo vi /etc/hosts`
+    ```
+    # add the following into the /etc/hosts file
+    127.0.0.1     front-end.info broker-service.info
+    ```
+  - Run `minikube tunnel`
+  - Access `http://front-end.info/` on browser
