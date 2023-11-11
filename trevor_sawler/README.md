@@ -118,7 +118,7 @@ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.27
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 brew update
-brew upgrade 
+brew upgrade
 brew install protobuf
 
 which go
@@ -136,3 +136,31 @@ go get google.golang.org/grpc
 ```
 
 ---
+
+### Docker Swarm
+
+- [Docker Swarm](https://docs.docker.com/engine/swarm/)
+- Container Orchestration Service
+- Can deploy 1 or more instances of Docker images and Docker Swarm will manages.
+- Easy to scale your microservices.
+
+```
+// Push images to DockerHub
+docker build -f logger-service.dockerfile -t lowjiewei/logger-service:1.0.0 .
+docker push lowjiewei/logger-service:1.0.0
+
+docker build -f broker-service.dockerfile -t lowjiewei/broker-service:1.0.0 .
+docker push lowjiewei/broker-service:1.0.0
+
+docker build -f authentication-service.dockerfile -t lowjiewei/authentication-service:1.0.0 .
+docker push lowjiewei/authentication-service:1.0.0
+
+docker build -f mail-service.dockerfile -t lowjiewei/mail-service:1.0.0 .
+docker push lowjiewei/mail-service:1.0.0
+
+docker build -f listener-service.dockerfile -t lowjiewei/listener-service:1.0.0 .
+docker push lowjiewei/listener-service:1.0.0
+```
+
+### Kubernetes
+
