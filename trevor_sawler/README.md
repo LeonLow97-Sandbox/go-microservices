@@ -181,7 +181,10 @@ docker push lowjiewei/listener-service:1.0.0
     ```
   - Run `minikube tunnel`
   - Access `http://front-end.info/` on browser
-
-### Scaling in Kubernetes
-
-- Increase `replicas` in `spec`
+- Scaling in Kubernetes
+  - Increase `replicas` in `spec` as the declarative deployment approach
+- Updating Services
+  - Scale to 2 replicas first then apply image tag change, this ensures that the old image is still running and the application is not affected while the old pod is terminating
+  - E.g., Make changes to the image, change the image tag from `1.0.0` to `1.0.1`
+  - Then run `kubectl apply -f k8s`
+- [How To Configure Ingress TLS/SSL Certificates in Kubernetes](https://devopscube.com/configure-ingress-tls-kubernetes/)
