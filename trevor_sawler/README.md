@@ -181,3 +181,7 @@ docker push lowjiewei/listener-service:1.0.0
     ```
   - Run `minikube tunnel`
   - Access `http://front-end.info/` on browser
+
+### Scaling in Kubernetes
+
+- Increase `replicas` in `spec`
