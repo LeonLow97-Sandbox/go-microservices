@@ -29,7 +29,7 @@ services:
       mode: replicated
       replicas: 1
 
-  mail-service:
+  mailer-service:
     image: lowjiewei/mail-service:1.0.0
     deploy:
       mode: replicated

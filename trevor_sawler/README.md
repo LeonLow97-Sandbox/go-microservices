@@ -164,3 +164,9 @@ docker push lowjiewei/listener-service:1.0.0
 
 ### Kubernetes
 
+- Replacing `broker-service` with Kubernetes `LoadBalancer` Service.
+  - `kubectl delete broker-service`
+  - Then, running the following command to export the Kubernetes Cluster to the outside world using a `LoadBalancer` service. In Production, we typically use an `Ingress` Service.
+  - `kubectl expose deployment broker-service --type=LoadBalancer --port=8080 --target-port=8080`
+- Running separate postgres server
+  - `docker-compose -f postgres.yml up -d` in `project` directory
