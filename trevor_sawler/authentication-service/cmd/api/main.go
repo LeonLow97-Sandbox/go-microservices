@@ -18,8 +18,8 @@ const webPort = "80"
 var counts int64
 
 type Config struct {
-	DB     *sql.DB
-	Models data.Models
+	Repo data.Repository
+	Client *http.Client
 }
 
 func main() {
@@ -27,11 +27,13 @@ func main() {
 
 	// connecting to database
 	db := openDB()
+	if db == nil {
+		log.Panic("Can't connect to Postgres!")
+	}
 
 	// set up config
 	app := Config{
-		DB:     db,
-		Models: data.New(db),
+		Client: &http.Client{},
 	}
 
 	srv := &http.Server{
@@ -58,4 +60,9 @@ func openDB() *sql.DB {
 	}
 
 	return db
+}
+
+func (app *Config) setupRepo(conn *sql.DB) {
+	db := data.NewPostgresRepository(conn)
+	app.Repo = db
 }
