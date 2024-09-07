@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  webserver:
+    build: .
+    ports:
+      - '8080:8080'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: docker.webserver
+
+  fluentd:
+    image: fluent/fluentd:v1.17.1-debian-arm64-1.0
+    ports:
+      - '24224:24224'
+      - '24224:24224/udp'
+    volumes:
+      - ./fluentd/:/fluentd/etc
+    environment:
+      - FLUENTD_CONF=fluentd.conf
